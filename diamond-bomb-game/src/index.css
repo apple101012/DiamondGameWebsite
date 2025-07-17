@@ -32,13 +32,23 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   user-select: none;
-  transition: background 0.3s;
+  transition: background 0.3s, opacity 0.3s;
 }
 
 .cell.revealed {
   background-color: #3a3a5a;
+  box-shadow: 0 0 10px 2px #00ffff; /* diamond glow */
+}
+
+.cell.clickable {
+  background-color: #2d3b6b;
+  cursor: pointer;
+}
+
+.cell.dimmed {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 .buttons {
@@ -62,14 +72,10 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.multiplier {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
+.multiplier,
 .balance {
   font-size: 18px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .controls input {
