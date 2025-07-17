@@ -8,18 +8,33 @@ body {
 }
 
 .container {
+  max-width: 500px;
+  margin: 0 auto;
   padding: 20px;
 }
 
-.grid {
+.grid.scrollable {
+  max-height: 320px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: fit-content;
+  scroll-snap-type: y mandatory;
+  border: 2px solid #444;
+  padding: 5px;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
+  align-items: flex-start;
+  box-sizing: border-box;
 }
 
 .row {
   display: flex;
+  flex-wrap: nowrap;
+}
+
+.snap-row {
+  scroll-snap-align: center;
 }
 
 .cell {
@@ -34,21 +49,19 @@ body {
   align-items: center;
   user-select: none;
   transition: background 0.3s, opacity 0.3s;
+  cursor: pointer;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 .cell.revealed {
   background-color: #3a3a5a;
-  box-shadow: 0 0 10px 2px #00ffff; /* diamond glow */
-}
-
-.cell.clickable {
-  background-color: #2d3b6b;
-  cursor: pointer;
+  box-shadow: 0 0 10px 2px #00ffff;
 }
 
 .cell.dimmed {
   opacity: 0.3;
-  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .buttons {
